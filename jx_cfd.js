@@ -6,22 +6,7 @@ const $ = new Env('惊喜财富岛');
 // 公共变量
 const JD_COOKIE = process.env.JD_COOKIE
 //只用于判断，推送是sendnodify
-let SEND_KEY = '';
-if(process.env.PUSH_KEY){
-  SEND_KEY = process.env.PUSH_KEY
-}
-if(process.env.BARK_PUSH){
-  SEND_KEY = process.env.BARK_PUSH
-}
-if(process.env.TG_BOT_TOKEN){
-    SEND_KEY = process.env.TG_BOT_TOKEN
-}
-if(process.env.DD_BOT_TOKEN){
-    SEND_KEY = process.env.DD_BOT_TOKEN
-}
-if(process.env.IGOT_PUSH_KEY){
-    SEND_KEY = process.env.IGOT_PUSH_KEY
-}
+
 
 async function downFile () {
     const url = 'https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd.js'
@@ -63,18 +48,7 @@ async function start() {
     if (fs.existsSync(path)) {
         content = fs.readFileSync(path, "utf8");
     }
-    var Time = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
-    if(SEND_KEY) {
-        if (content.includes("Cookie") && Time.getHours()==9 && Time.getMinutes()<=40) {
-            await notify.sendNotify("惊喜财富岛-" + new Date().toLocaleDateString(), content);
-            console.log("惊喜财富岛-" + content)
-        }else{
-            console.log("惊喜财富岛-" + content)
-        }
-    }else{
-        await notify.sendNotify("惊喜财富岛-" + new Date().toLocaleDateString(), content);
-        console.log("惊喜财富岛-" + content)
-    }
+  
 
     //运行完成后，删除下载的文件
     console.log('运行完成后，删除下载的文件\n')
