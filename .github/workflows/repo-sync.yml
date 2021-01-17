@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: sync-sazs34-scripts
+name: sync-CC-scripts
 on:
   schedule:
     - cron: '5 15 * * *'
@@ -19,11 +19,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync sazs34-scripts
+      - name: sync CC-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/sazs34/MyActions.git"
+          source_repo: "https://github.com/cc0606/jd_ac.git"
           source_branch: "master"
           destination_branch: "main"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
